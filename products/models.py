@@ -1,11 +1,7 @@
 from django.db import models
-
+from categories.models import Category
 
 # Create your models here.
-class Category(models.Model):
-    name = models.CharField(unique=True, blank=False, null=False, max_length=50)
-    
-
 class Product(models.Model):
     name = models.CharField(unique=True, blank=False, null=False, max_length=50)
     description = models.CharField(blank=False, null=False, max_length=500)
