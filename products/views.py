@@ -3,10 +3,13 @@ from products.serializers import ProductSerializer
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
 class ProductsListView(APIView):
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+    
     def get(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
